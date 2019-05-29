@@ -1,0 +1,11 @@
+body{
+    font-family: sans-serif;
+}
+.cont-form{
+    display: inline-block;
+    border: 1.5px solid;
+    
+}
+.cont-form .form-login{
+    padding: 10px;
+} 
