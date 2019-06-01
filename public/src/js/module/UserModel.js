@@ -9,7 +9,9 @@ export default class UserController{
 		return this.id;
 	}
 	set Id(value){
-		this.id = value;
+		if(length(value)>0){
+			this.id = value;
+		}		
 	}
 	get Name(){
 		return this.name;
@@ -37,5 +39,11 @@ export default class UserController{
 			pass:this.pass
 		}
 		return user;
+	}
+	loadUserFromForm(jsonUser){
+		this.Id = jsonUser.id;
+		this.Name = jsonUser.name;
+		this.Email = jsonuser.email;
+		this.pass = jsonUser.pass;
 	}
 }
