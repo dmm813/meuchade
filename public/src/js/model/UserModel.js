@@ -1,4 +1,4 @@
-export default class UserController{
+export default class UserModel{
 	constructor(){
 		this.id = "";
 		this.name = "";
@@ -9,7 +9,7 @@ export default class UserController{
 		return this.id;
 	}
 	set Id(value){
-		if(length(value)>0){
+		if(String(value).length>0){
 			this.id = value;
 		}		
 	}
@@ -31,19 +31,26 @@ export default class UserController{
 	set Pass(value){
 		this.pass = value;
 	}
-	returUserJson(){
+	returnUserJson(){
 	 let user={
-			id:this.id,
-			name:this.name,
-			email:this.email,
-			pass:this.pass
+			id:this.Id,
+			name:this.Name,
+			email:this.Email,
+			pass:this.Pass
 		}
 		return user;
 	}
 	loadUserFromForm(jsonUser){
 		this.Id = jsonUser.id;
 		this.Name = jsonUser.name;
-		this.Email = jsonuser.email;
+		this.Email = jsonUser.email;
 		this.pass = jsonUser.pass;
 	}
+	insertUser(userJson){
+		console.log(userJson);
+		this.loadUserFromForm(userJson);
+		console.log(this.returnUserJson());
+		let db = firebase.database().ref('/user');
+	}
+
 }
