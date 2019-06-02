@@ -9,3 +9,7 @@ body{
 .cont-form .form-login{
     padding: 10px;
 } 
+.cont-form .form-register{
+    padding: 10px;
+    display: none;
+}
