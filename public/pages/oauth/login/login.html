@@ -10,13 +10,26 @@
 <body>
 	<div class="cont-form">
 		<form class='form-login' id='id-form-login'>
-			<label for="id-txt-login">Login</label><br>
+			<label for="id-txt-login">Entre com o seu E-mail:</label><br>
 			<input type="text" name="txt-login" id="id-txt-login"><br><br>
-			<label for="id-pass-login"></label>
+			<label for="id-pass-login">Senha</label><br>
 			<input type="text" name="txt-pass" id="id-pass-login"><br><br>
 			<button id="id-btn-login">Entrar</button>
+			<button id="id-btn-register"> Registre - se</button>
+		</form>
+		<form class="form-register" id="id-form-register">
+			<label for="id-reg-name"> Nome </label><br>
+			<input type="text" name="reg-name" id="id-reg-name"><br><br>
+			<label for="id-reg-email"> E-mail</label><br>
+			<input type="email" name="reg-email" id="id-reg-email"><br><br>
+			<label for="id-reg-pass">Senha</label><br>
+			<input type="password" name="reg-pass" id="id-reg-pass"><br><br>
+			<label for="id-reg-confirmPass">Confirme sua Senha</label><br>
+			<input type="password" name="reg-confirmPass" id="id-reg-confirmPass"><br><br>
+			<button id="id-reg-btnSave">Salvar</button>
 		</form>
 	</div>
+	
 	<script type="module" src="main.js"></script>
 </body>
 </html>
