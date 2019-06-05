@@ -3,7 +3,7 @@ export default class UserModel{
 		this.id = "";
 		this.name = "";
 		this.email = "";
-		this.pass = "";
+    this.pass = "";
 	}
 	get Id(){
 		return this.id;
@@ -32,16 +32,27 @@ export default class UserModel{
 		this.pass = value;
 	}
 	returnUserJson(){
-	 let user={
-			id:this.Id,
+    let user = {};
+    if(this.id){ 
+      user={
+        id:this.Id,
+        name:this.Name,
+        email:this.Email,
+        pass:this.Pass
+      } 
+  }else{
+    user={
 			name:this.Name,
 			email:this.Email,
 			pass:this.Pass
-		}
+    }
+  }
 		return user;
 	}
 	loadUserFromForm(jsonUser){
-		this.Id = jsonUser.id;
+    if(jsonUser.id){
+      this.Id = jsonUser.id;
+    }
 		this.Name = jsonUser.name;
 		this.Email = jsonUser.email;
 		this.pass = jsonUser.pass;
@@ -49,8 +60,10 @@ export default class UserModel{
 	insertUser(userJson){
 		console.log(userJson);
 		this.loadUserFromForm(userJson);
-		console.log(this.returnUserJson());
-		let db = firebase.database().ref('/user');
+    console.log(this.returnUserJson());
+    this.getReference('/user').push(this.returnUserJson());
 	}
-
+  getReference(route){
+    return firebase.database().ref(route);
+  }
 }
