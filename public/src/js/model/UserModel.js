@@ -60,8 +60,8 @@ export default class UserModel{
 	insertUser(userJson){
 		console.log(userJson);
 		this.loadUserFromForm(userJson);
-    console.log(this.returnUserJson());
-    this.getReference('/user').push(this.returnUserJson());
+    	console.log(this.returnUserJson());
+    	this.getReference('/user').push(this.returnUserJson());
 	}
   getReference(route){
     return firebase.database().ref(route);
