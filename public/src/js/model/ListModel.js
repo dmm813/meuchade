@@ -1,8 +1,8 @@
-export default class UserModel{
+export default class ListModel{
 	constructor(){
 		this.id = "";
 		this.item = "";
-		this.qtde = "";
+		this.qtde = "1";
 		this.name = "";
 		this.tel = "";
 	}
@@ -38,37 +38,37 @@ export default class UserModel{
 	set Tel(value){
 		this.tel = value;
 	}
-	returnUserJson(){
+	returnListJson(){
     let user = {};
     if(this.id){ 
       user={
         id:this.Id,
         item:this.Item,
         qtde:this.Qtde,
-		name:this.Name,
-		tel:this.Tel
+		    name:this.Name,
+		    tel:this.Tel
       } 
   }else{
     user={
 		item:this.Item,
-        qtde:this.Qtde,
+    qtde:"1",
 		name:this.Name,
 		tel:this.Tel
     }
   }
 		return user;
 	}
-	loadUserFromForm(jsonUser){
-    if(jsonUser.id){
-      this.Id = jsonUser.id;
+	loadListFromForm(jsonList){
+    if(jsonList.id){
+      this.Id = jsonList.id;
     }
-		this.Name = jsonUser.name;
-		this.Qtde = jsonUser.qtde;
-		this.pass = jsonUser.pass;
+    this.Item = jsonList.item;
+    this.Name = jsonList.name;
+    this.Tel = jsonList.tel
 	}
-	insertUser(userJson){
-		this.loadUserFromForm(userJson);
-    this.getReference('/list').push(this.returnUserJson());
+  insertList(listJson){
+	  this.loadListFromForm(listJson);
+    this.getReference('/list').push(this.returnListJson());
 	}
   getReference(route){
     return firebase.database().ref(route);
