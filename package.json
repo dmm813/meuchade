@@ -1,0 +1,20 @@
+{
+  "name": "meuchade",
+  "version": "1.0.0",
+  "description": "System to management list for party of new home, new born, etc...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmm813/meuchade.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmm813/meuchade/issues"
+  },
+  "homepage": "https://github.com/dmm813/meuchade#readme"
+}

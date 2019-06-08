@@ -33,6 +33,7 @@ export default class UserController{
         userJson[element.name.split("-")[1]] =  element.value;
       }
     });
+    console.log(userJson);
     return userJson;
   }
   ableFormRegister(){
@@ -46,15 +47,16 @@ export default class UserController{
   }
   postUser(){
     this.btnSaveEl.addEventListener('click', (event)=>{
+      debugger;
       event.preventDefault();
-      if(!this.emailValidate()){
-        alert("email inválido!");
-        return;
-      }
-      if(!this.passValidate()){
-        alert("senhas não conferem!");
-        return;
-      } 
+      // if(!this.emailValidate()){
+      //   alert("email inválido!");
+      //   return;
+      // }
+      // if(!this.passValidate()){
+      //   alert("senhas não conferem!");
+      //   return;
+      // } 
       let formreg = document.getElementById('id-form-register')
       let userJson = this.loadUserJson(formreg);
       this.userModel.insertUser(userJson);
