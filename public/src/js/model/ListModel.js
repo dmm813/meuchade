@@ -70,10 +70,65 @@ export default class ListModel {
 		this.loadListFromForm(listJson);
 		this.getReference('/list').push(this.returnListJson());
 	}
+	caastrarBanco() {
+		let obj = [
+			{ item: "Liquidificador", qtde: "1", name: "", tel: "" },
+			{ item: "Batedeira", qtde: "1", name: "", tel: "" },
+			{ item: "Espremedor de laranja", qtde: "1", name: "", tel: "" },
+			{ item: "Cafeteira elétrica", qtde: "1", name: "", tel: "" },
+			{ item: "Ferro de passar", qtde: "1", name: "", tel: "" },
+			{ item: "Sanduicheira", qtde: "1", name: "", tel: "" },
+			{ item: "Ventilador", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de panela", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de panela", qtde: "1", name: "", tel: "" },
+			{ item: "Panela de pressão", qtde: "1", name: "", tel: "" },
+			{ item: "Panela de pressão", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de frigideiras", qtde: "1", name: "", tel: "" },
+			{ item: "Cuzcuzeira", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de facas", qtde: "1", name: "", tel: "" },
+			{ item: "Faqueiro", qtde: "1", name: "", tel: "" },
+			{ item: "Faqueiro", qtde: "1", name: "", tel: "" },
+			{ item: "Escorredor de arroz", qtde: "1", name: "", tel: "" },
+			{ item: "Escorredor de louça", qtde: "1", name: "", tel: "" },
+			{ item: "Tabua de carne", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de travessas", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de travessas", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de forma para bolo", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de forma para bolo", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de copos", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de copos", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de taças", qtde: "1", name: "", tel: "" },
+			{ item: "Boleira", qtde: "1", name: "", tel: "" },
+			{ item: "Jarra", qtde: "1", name: "", tel: "" },
+			{ item: "Jarra", qtde: "1", name: "", tel: "" },
+			{ item: "Jarra", qtde: "1", name: "", tel: "" },
+			{ item: "Tabua de passar", qtde: "1", name: "", tel: "" },
+			{ item: "Concha/Colher para servir/Espátula/Espumadeira", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de jantar (cor branca)", qtde: "1", name: "", tel: "" },
+			{ item: "Lixeira de inox", qtde: "1", name: "", tel: "" },
+			{ item: "Lixeira de inox", qtde: "1", name: "", tel: "" },
+			{ item: "Cesto de roupa", qtde: "1", name: "", tel: "" },
+			{ item: "Cesto de roupa", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de toalhas", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de toalhas", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de toalhas", qtde: "1", name: "", tel: "" },
+			{ item: "Conjunto de toalhas", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de cama (Queen)", qtde: "1", name: "", tel: "" },
+			{ item: "Jogo de cama (Queen)", qtde: "1", name: "", tel: "" },
+		];
+		obj.forEach((value) => {
+
+			this.getReference('/list/').push(value);
+		})
+	}
+	pushList(key, itens) {
+		this.getReference('/list/' + key).set({ ...itens });
+		location.reload();
+	}
 	listItens() {
 		return new Promise((reject, resolve) => {
 			this.getReference('/list').on('value', (item) => {
-				console.log(item.val())
+				//console.log(item.)
 				if (item.val() != null) {
 					resolve(item);
 				} else {
