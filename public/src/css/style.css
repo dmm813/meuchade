@@ -1,3 +1,12 @@
+h2 {
+    text-align: center;
+}
+td, th, tr{
+    text-align: center;
+}
+.modal{
+    background-color: rgba(0,0,0,0.5);
+}
 body{
     font-family: sans-serif;
 }
@@ -6,10 +15,16 @@ body{
     border: 1.5px solid;
     
 }
+.mostraModal{
+    display: block !important;
+}
 .cont-form .form-login{
     padding: 10px;
 } 
 .cont-form .form-register{
     padding: 10px;
     display: none;
+}
+.fa-gift {
+    font-size: 20px;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
@@ -20,32 +21,54 @@
 
   </head>
   <body>
-    <div class="content">
-      <div class="cont-form">
-        <form class="form-register" id="id-form-register">
-          <label for="id-reg-name"> Nome </label><br>
-          <input type="text" name="txt-item" id="id-reg-name"><br><br>
-          <label for="id-reg-email"> E-mail</label><br>
-          <input type="text" name="txt-qtde" id="id-reg-email"><br><br>
-          <label for="id-reg-pass">Senha</label><br>
-          <input type="password" name="txt-name" id="id-reg-pass"><br><br>
-          <label for="id-reg-confirmPass">Confirme sua Senha</label><br>
-          <input type="password" name="txt-tel" id="id-reg-confirmPass"><br><br>
-          <button id="id-reg-btnSave">Salvar</button>
-        </form>
+    <div class="container">
+      <div id="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close closeModal" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  Item: <span id="item"></span>
+                </div>
+                <div class="form-group">
+                  <label for="responsavel">Responsável</label>
+                  <input type="text" class="form-control" id="responsavel" placeholder="Digite o seu nome">
+                </div>
+                <div class="form-group">
+                  <label for="telefone">Telefone</label>
+                  <input type="text" class="form-control" id="telefone" placeholder="Digite o seu nome">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary">Salvar Nome na Lista</button>
+            </div>
+          </div>
+        </div>
       </div>
-        <table class="table" id="shipList">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">Qtd</th>
-              <th scope="col">Responsável</th>
-              <th scope="col">Telefone</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+      <div class="col-12">
+        <h2>Chá de Casa Nova Rodrigo & Sabrynna</h2> 
+      </div>
+      <table class="col table" id="shipList">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Qtd</th>
+            <th scope="col">Responsável</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Presentear</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
     <script type="module" src="main.js"></script>
      <script>
@@ -95,22 +118,47 @@
         {item: "Jogo de cama (Queen)", qtd: "1", responsavel:"", telefone:""},
         {item: "Jogo de cama (Queen)", qtd: "1", responsavel:"", telefone:""},
       ];
-
+      const modal = document.getElementById("modal");
+      const closeBtn = document.getElementsByClassName("closeModal");
+      closeBtn[0].addEventListener('click',function(){
+        closeModal();
+      })
+      closeBtn[1].addEventListener('click',function(){
+        closeModal();
+      })
+      function closeModal() {
+        
+        modal.classList.toggle("mostraModal")
+      }
       obj.forEach((value)=>{
-        console.log(value)
-        addLinha(value.item, value.qtd, value.responsavel, value.telefone);
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-success';
+        btn.innerHTML = '<i class="fa fa-gift" aria-hidden="true"></i>';
+        btn.addEventListener("click", function(e){
+          e.stopPropagation();
+          const item = document.getElementById("item");
+          //modal.style.display = "block";
+          item.innerHTML = value.item;
+          console.log(value.item);
+          closeModal()
+
+        });
+        addLinha(value.item, value.qtd, value.responsavel, value.telefone, btn);
       })
 
-      function addLinha(cel1, cel2, cel3, cel4) {
+      function addLinha(cel1, cel2, cel3, cel4, cel5) {
+        console.log(cel5);
         let row = tableList.insertRow(0);
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
         let cell4 = row.insertCell(3);
+        let cell5 = row.insertCell(4);
         cell1.innerHTML = cel1;
         cell2.innerHTML = cel2;
         cell3.innerHTML = cel3;
         cell4.innerHTML = cel4;
+        cell5.appendChild(cel5);
       }
 
     </script>
