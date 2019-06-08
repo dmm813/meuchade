@@ -2,19 +2,12 @@ export default class listController {
   constructor(list) {
     this.listModel = list;
     //this.btnSaveEl = document.getElementById("id-reg-btnSave");
-    this.registerList();
-  }
-  registerList() {
-    // this.btnSaveEl.addEventListener("click", (event)=>{
-    //   event.preventDefault();
-    //   let listJson = {
-    //     item:'liquidificador',
-    //     qtde:'1',
-    //     name:"davidson",
-    //     tel:"996409225"
-    //   };
-    //   this.listModel.insertList(listJson);
-    // });
+    //this.registerList();
+  }  
+  registerList(){
+    this.btnSaveEl.addEventListener("click", (event)=>{
+      event.preventDefault();
+    });
   }
 
   loadUserJson(form) {
@@ -27,4 +20,6 @@ export default class listController {
     console.log(userJson);
     return userJson;
   }
+  
+  
 }

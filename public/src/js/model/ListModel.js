@@ -69,7 +69,19 @@ export default class ListModel{
   insertList(listJson){
 	  this.loadListFromForm(listJson);
     this.getReference('/list').push(this.returnListJson());
-	}
+  }
+  listItens(){
+    return new Promise((reject, resolve) =>{
+      this.getReference('/list').on('value',(item)=>{
+        if(!item.val()){
+          resolve(item.val().value);
+        }else{
+          reject(item.val());
+        }  
+      });
+        
+    })    
+  }
   getReference(route){
     return firebase.database().ref(route);
   }
