@@ -6,13 +6,14 @@ const tableList = document.getElementById('shipList').getElementsByTagName('tbod
       
 const model = new ListModel();
 const controller = new ListController(model);
-model.listItens().then(content=>{
-  console.log(content);
+model.listItens().then( err=>{
+  console.log(err);
+}, content=>{
+  //console.log(content);
   content.forEach((value)=>{
-    addLinha(value.item, value.qtd, value.name, value.tel);
+    console.log(value.val());
+    //addLinha(value.item, value.qtd, value.name, value.tel);
   });
-}, err=>{
-    console.log(err);
 });
       
 closeBtn[0].addEventListener('click',function(){

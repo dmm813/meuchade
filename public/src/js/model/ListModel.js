@@ -72,11 +72,11 @@ export default class ListModel{
   }
   listItens(){
     return new Promise((reject, resolve) =>{
-      this.getReference('/list').once('value',(item)=>{
-        if(!item.val()){
-          resolve(item.val());
+      this.getReference('/list').on('value',(item)=>{
+        if(item.val()!=null){
+          resolve(item);
         }else{
-          reject(item.val());
+          reject(item);
         }  
       });
         
