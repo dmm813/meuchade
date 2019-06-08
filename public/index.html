@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
 
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/6.1.0/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -17,19 +20,99 @@
 
   </head>
   <body>
-    <div class="cont-form">
-      <form class="form-register" id="id-form-register">
-        <label for="id-reg-name"> Nome </label><br>
-        <input type="text" name="txt-item" id="id-reg-name"><br><br>
-        <label for="id-reg-email"> E-mail</label><br>
-        <input type="text" name="txt-qtde" id="id-reg-email"><br><br>
-        <label for="id-reg-pass">Senha</label><br>
-        <input type="password" name="txt-name" id="id-reg-pass"><br><br>
-        <label for="id-reg-confirmPass">Confirme sua Senha</label><br>
-        <input type="password" name="txt-tel" id="id-reg-confirmPass"><br><br>
-        <button id="id-reg-btnSave">Salvar</button>
-      </form>
+    <div class="content">
+      <div class="cont-form">
+        <form class="form-register" id="id-form-register">
+          <label for="id-reg-name"> Nome </label><br>
+          <input type="text" name="txt-item" id="id-reg-name"><br><br>
+          <label for="id-reg-email"> E-mail</label><br>
+          <input type="text" name="txt-qtde" id="id-reg-email"><br><br>
+          <label for="id-reg-pass">Senha</label><br>
+          <input type="password" name="txt-name" id="id-reg-pass"><br><br>
+          <label for="id-reg-confirmPass">Confirme sua Senha</label><br>
+          <input type="password" name="txt-tel" id="id-reg-confirmPass"><br><br>
+          <button id="id-reg-btnSave">Salvar</button>
+        </form>
+      </div>
+        <table class="table" id="shipList">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Qtd</th>
+              <th scope="col">Responsável</th>
+              <th scope="col">Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
     </div>
     <script type="module" src="main.js"></script>
+     <script>
+      const tableList = document.getElementById('shipList').getElementsByTagName('tbody')[0];
+      let obj = [
+        {item: "Liquidificador", qtd: "1", responsavel:"", telefone:""},
+        {item: "Batedeira", qtd: "1", responsavel:"", telefone:""},
+        {item: "Espremedor de laranja", qtd: "1", responsavel:"", telefone:""},
+        {item: "Cafeteira elétrica", qtd: "1", responsavel:"", telefone:""},
+        {item: "Ferro de passar", qtd: "1", responsavel:"", telefone:""},
+        {item: "Sanduicheira", qtd: "1", responsavel:"", telefone:""},
+        {item: "Ventilador", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de panela", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de panela", qtd: "1", responsavel:"", telefone:""},
+        {item: "Panela de pressão", qtd: "1", responsavel:"", telefone:""},
+        {item: "Panela de pressão", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de frigideiras", qtd: "1", responsavel:"", telefone:""},
+        {item: "Cuzcuzeira", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de facas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Faqueiro", qtd: "1", responsavel:"", telefone:""},
+        {item: "Faqueiro", qtd: "1", responsavel:"", telefone:""},
+        {item: "Escorredor de arroz", qtd: "1", responsavel:"", telefone:""},
+        {item: "Escorredor de louça", qtd: "1", responsavel:"", telefone:""},
+        {item: "Tabua de carne", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de travessas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de travessas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de forma para bolo", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de forma para bolo", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de copos", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de copos", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de taças", qtd: "1", responsavel:"", telefone:""},
+        {item: "Boleira", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jarra", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jarra", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jarra", qtd: "1", responsavel:"", telefone:""},
+        {item: "Tabua de passar", qtd: "1", responsavel:"", telefone:""},
+        {item: "Concha/Colher para servir/Espátula/Espumadeira", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de jantar (cor branca)", qtd: "1", responsavel:"", telefone:""},
+        {item: "Lixeira de inox", qtd: "1", responsavel:"", telefone:""},
+        {item: "Lixeira de inox", qtd: "1", responsavel:"", telefone:""},
+        {item: "Cesto de roupa", qtd: "1", responsavel:"", telefone:""},
+        {item: "Cesto de roupa", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de toalhas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de toalhas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de toalhas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Conjunto de toalhas", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de cama (Queen)", qtd: "1", responsavel:"", telefone:""},
+        {item: "Jogo de cama (Queen)", qtd: "1", responsavel:"", telefone:""},
+      ];
+
+      obj.forEach((value)=>{
+        console.log(value)
+        addLinha(value.item, value.qtd, value.responsavel, value.telefone);
+      })
+
+      function addLinha(cel1, cel2, cel3, cel4) {
+        let row = tableList.insertRow(0);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+        cell1.innerHTML = cel1;
+        cell2.innerHTML = cel2;
+        cell3.innerHTML = cel3;
+        cell4.innerHTML = cel4;
+      }
+
+    </script>
   </body>
 </html>
