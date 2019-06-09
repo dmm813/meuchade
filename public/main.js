@@ -7,7 +7,6 @@ const closeBtn = document.getElementsByClassName("closeModal");
 
 const model = new ListModel();
 const controller = new ListController(model);
-//model.caastrarBanco();
 model.listItens().then(err => {
   console.log(err);
 }, content => {
@@ -50,7 +49,12 @@ model.listItens().then(err => {
       testeDiv.innerHTML = '';
       addLinha(value.val().item, value.val().qtde, value.val().name, value.val().tel, testeDiv, true);
     }
+
   });
+  document.getElementById("loading").style.opacity = "0";
+  setTimeout(() => {
+    document.getElementById("loading").remove();
+  }, 500);
 });
 
 closeBtn[0].addEventListener('click', function () {

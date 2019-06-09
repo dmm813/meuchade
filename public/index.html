@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Chá de Casa Nova</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +23,12 @@
 
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
+      <div id="loading" class="loading">
+        <div class="carregamento">
+          <i class="fa fa-spinner" aria-hidden="true"></i>
+        </div>
+      </div>
       <div id="modal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -56,19 +63,21 @@
       <div class="col-12">
         <h2>Chá de Casa Nova Rodrigo & Sabrynna</h2> 
       </div>
-      <table class="col table" id="shipList">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Qtd</th>
-            <th scope="col">Responsável</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Presentear</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table" id="shipList">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Qtd</th>
+              <th scope="col">Responsável</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Presentear</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
     </div>
     <script type="module" src="main.js"></script>
   </body>
