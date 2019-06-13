@@ -68,17 +68,29 @@ function closeModal() {
   modal.classList.toggle("mostraModal")
 }
 function addLinha(cel1, cel2, cel3, cel4, cel5, disabilitado) {
+  const admin = window.location.pathname.match(/admin/i);
   let row = tableList.insertRow(0);
-  let cell1 = row.insertCell(0);
-  let cell2 = row.insertCell(1);
-  let cell3 = row.insertCell(2);
-  let cell4 = row.insertCell(3);
-  let cell5 = row.insertCell(4);
-  cell1.innerHTML = cel1;
-  cell2.innerHTML = cel2;
-  cell3.innerHTML = cel3;
-  cell4.innerHTML = cel4;
-  cell5.appendChild(cel5);
+  if (admin) {
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
+    cell1.innerHTML = cel1;
+    cell2.innerHTML = cel2;
+    cell3.innerHTML = cel3;
+    cell4.innerHTML = cel4;
+    cell5.appendChild(cel5);
+  } else {
+    if (disabilitado)
+      return
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell5 = row.insertCell(2);
+    cell1.innerHTML = cel1;
+    cell2.innerHTML = cel2;
+    cell5.appendChild(cel5);
+  }
   if (disabilitado) {
     row.style.opacity = "0.3";
   }

@@ -2,6 +2,7 @@ h2 {
     text-align: center;
 }
 td, th, tr{
+    vertical-align: middle !important;
     text-align: center;
 }
 .modal{
