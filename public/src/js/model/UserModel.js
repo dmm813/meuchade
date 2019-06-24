@@ -1,9 +1,10 @@
 export default class UserModel{
 	constructor(){
 		this.id = "";
+		this.item = "";
+		this.qtde = "";
 		this.name = "";
-		this.email = "";
-		this.pass = "";
+		this.tel = "";
 	}
 	get Id(){
 		return this.id;
@@ -13,44 +14,63 @@ export default class UserModel{
 			this.id = value;
 		}		
 	}
+	get Item(){
+		return this.item;
+	}
+	set Item(value){
+		this.item = value;
+	}
+	get Qtde(){
+		return this.qtde;
+	}
+	set Qtde(value){
+		this.qtde = value;
+	}
 	get Name(){
 		return this.name;
 	}
 	set Name(value){
 		this.name = value;
 	}
-	get Email(){
-		return this.email;
+	get Tel(){
+		return this.tel;
 	}
-	set Email(value){
-		this.email = value;
-	}
-	get Pass(){
-		return this.pass;
-	}
-	set Pass(value){
-		this.pass = value;
+	set Tel(value){
+		this.tel = value;
 	}
 	returnUserJson(){
-	 let user={
-			id:this.Id,
-			name:this.Name,
-			email:this.Email,
-			pass:this.Pass
-		}
+    let user = {};
+    if(this.id){ 
+      user={
+        id:this.Id,
+        item:this.Item,
+        qtde:this.Qtde,
+		name:this.Name,
+		tel:this.Tel
+      } 
+  }else{
+    user={
+		item:this.Item,
+        qtde:this.Qtde,
+		name:this.Name,
+		tel:this.Tel
+    }
+  }
 		return user;
 	}
 	loadUserFromForm(jsonUser){
-		this.Id = jsonUser.id;
+    if(jsonUser.id){
+      this.Id = jsonUser.id;
+    }
 		this.Name = jsonUser.name;
-		this.Email = jsonUser.email;
+		this.Qtde = jsonUser.qtde;
 		this.pass = jsonUser.pass;
 	}
 	insertUser(userJson){
-		console.log(userJson);
 		this.loadUserFromForm(userJson);
-		console.log(this.returnUserJson());
-		let db = firebase.database().ref('/user');
+    this.getReference('/list').push(this.returnUserJson());
 	}
-
+  getReference(route){
+    return firebase.database().ref(route);
+  }
 }

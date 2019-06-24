@@ -22,7 +22,7 @@ export default class UserController{
       event.preventDefault();
       let form = document.getElementById("id-form-login")
       let userJson = this.loadUserJson(form);
-      console.log(userJson);
+      
     });
   }
 
@@ -30,9 +30,10 @@ export default class UserController{
     var userJson = {};
     [...form].forEach(element => {
       if (element.name.match(/txt.\w+/g)){
-        userJson[element.name] =  element.value;
+        userJson[element.name.split("-")[1]] =  element.value;
       }
     });
+    console.log(userJson);
     return userJson;
   }
   ableFormRegister(){
@@ -46,10 +47,28 @@ export default class UserController{
   }
   postUser(){
     this.btnSaveEl.addEventListener('click', (event)=>{
+      debugger;
       event.preventDefault();
+      // if(!this.emailValidate()){
+      //   alert("email inválido!");
+      //   return;
+      // }
+      // if(!this.passValidate()){
+      //   alert("senhas não conferem!");
+      //   return;
+      // } 
       let formreg = document.getElementById('id-form-register')
       let userJson = this.loadUserJson(formreg);
       this.userModel.insertUser(userJson);
     });
+  }
+  emailValidate(){
+    let email = document.getElementById("id-reg-email");
+    return (email.value.match(/\S+@\w+\.\w{2,6}(\.\w{2})?/gi));
+  }
+  passValidate(){
+    let pass = document.getElementById("id-reg-pass");
+    let confirmPass = document.getElementById("id-reg-confirmPass");
+    return (pass.value == confirmPass.value);
   }
 }
